@@ -1,22 +1,18 @@
 import "./App.css";
-import { Row } from "react-bootstrap";
-import data from "./data.js";
-import { useState } from "react";
 import Navibar from "./components/Navibar";
-import Product from "./components/Product";
+import { Routes, Route } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import DetailPage from "./pages/DetailPage";
+
 function App() {
-  let [shoes] = useState(data);
   return (
     <div className="App">
       <Navibar />
-      <div className="main-bg"></div>
-      <Row>
-        {shoes.map((a, idx) => {
-          return <Product shoes={shoes[idx]} />;
-        })}
-      </Row>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/detail" element={<DetailPage />} />
+      </Routes>
     </div>
   );
 }
-
 export default App;
