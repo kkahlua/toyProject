@@ -6,16 +6,18 @@ import {
   Form,
   NavDropdown,
 } from "react-bootstrap";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faApplePay } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 function Navibar() {
+  let navigate = useNavigate();
   return (
     <div className="Navibar">
       <Navbar expand="lg" className="shopNavbar">
         <Container fluid>
-          <Navbar.Brand href="#">Toy Project Shop</Navbar.Brand>
+          <Navbar.Brand>Toy Project Shop</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -23,7 +25,18 @@ function Navibar() {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link href="#action1">
+              <Nav.Link
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                <FontAwesomeIcon icon={faHouse} fixedWidth />
+              </Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  navigate("/detail/0");
+                }}
+              >
                 <FontAwesomeIcon icon={faCartShopping} fixedWidth />
               </Nav.Link>
               <Nav.Link href="#action2">
