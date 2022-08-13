@@ -10,6 +10,7 @@ import { faCartShopping, faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faApplePay } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
+import "../style/navbar.css";
 
 function Navibar() {
   let navigate = useNavigate();
