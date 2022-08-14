@@ -6,17 +6,21 @@ function DetailPage(props) {
   let target = props.shoes.find((x) => {
     return x.id == id;
   });
-  let [alert, setAlert] = useState(true);
+  let [alert, setAlert] = useState(false);
+  let [inputValue, setInputValue] = useState("");
   useEffect(() => {
-    setTimeout(() => {
-      setAlert(false);
-    }, 2000);
-  }, []);
+    if (isNaN(inputValue)) {
+      setAlert(true);
+      setTimeout(() => {
+        setAlert(false);
+      }, 2000);
+    }
+  }, [inputValue]);
   return (
     <div className="detailPage">
       <div className="container">
         {alert == true ? (
-          <div className="alert alert-warning">2초 이내 구매시 할인</div>
+          <div className="alert alert-danger">수량을 잘못 입력하였습니다.</div>
         ) : null}
         <div className="row">
           <div className="col-md-6">
@@ -26,6 +30,12 @@ function DetailPage(props) {
             <h4 className="pt-5">{target.title}</h4>
             <p>{target.content}</p>
             <p>{target.price}원</p>
+            <input
+              onChange={(e) => {
+                setInputValue(e.target.value);
+              }}
+              value={inputValue}
+            />
             <button className="btn btn-danger">주문하기</button>
           </div>
         </div>
