@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -43,5 +44,4 @@ function DetailPage(props) {
     </div>
   );
 }
-
 export default DetailPage;

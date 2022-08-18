@@ -1,15 +1,31 @@
 import Product from "../components/Product";
 import { Col, Row, ToggleButton } from "react-bootstrap";
 import "../style/mainPage.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function MainPage(props) {
   let [sortSwitch, setSortSwitch] = useState(false);
+  let [dataSwitch, setDataSwitch] = useState(false);
   let temp = [...props.shoes];
   temp.sort((a, b) => {
     return a.price - b.price;
   });
-  console.log(temp);
+  useEffect(() => {
+    if (dataSwitch === true) {
+      axios
+        .get("https://codingapple1.github.io/shop/data2.json")
+        .then((result) => {
+          result.data.map((a) => {
+            props.shoes.push(a);
+          });
+          console.log(props.shoes);
+        })
+        .catch(() => {
+          console.log("실패함");
+        });
+    }
+  }, [dataSwitch]);
   return (
     <div className="mainPage">
       <div className="main-bg"></div>
@@ -32,10 +48,20 @@ function MainPage(props) {
       </div>
       <Row>
         {props.shoes.map((a, idx) => {
-          if (sortSwitch === false) return <Product shoes={props.shoes[idx]} />;
-          else return <Product shoes={temp[idx]} />;
+          if (sortSwitch === false)
+            return (
+              <Product shoes={props.shoes[idx]} key={props.shoes[idx].title} />
+            );
+          else return <Product shoes={temp[idx]} key={temp[idx].title} />;
         })}
       </Row>
+      <button
+        onClick={() => {
+          setDataSwitch(true);
+        }}
+      >
+        더보기
+      </button>
     </div>
   );
 }
