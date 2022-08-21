@@ -10,7 +10,6 @@ function DetailPage(props) {
   });
   let [alert, setAlert] = useState(false);
   let [inputValue, setInputValue] = useState("");
-  function productComponent() {}
   useEffect(() => {
     if (isNaN(inputValue)) {
       setAlert(true);
@@ -99,14 +98,26 @@ function TapComponent() {
   );
 }
 function TabContent(props) {
-  if (props.productTap === 0) {
-    return <div>상세정보</div>;
-  } else if (props.productTap === 1) {
-    return <div>리뷰</div>;
-  } else if (props.productTap === 2) {
-    return <div>질문</div>;
-  } else if (props.productTap === 3) {
-    return <div>반품 및 교환</div>;
-  }
+  let [ani, setAni] = useState("");
+  useEffect(() => {
+    setTimeout(() => {
+      setAni("end");
+    }, 100);
+    return () => {
+      setAni("");
+    };
+  }, [props.productTap]);
+  return (
+    <div className={`aniStart ${ani}`}>
+      {
+        [
+          <div>상세정보</div>,
+          <div>리뷰</div>,
+          <div>질문</div>,
+          <div>반품, 교환정보</div>,
+        ][props.productTap]
+      }
+    </div>
+  );
 }
 export default DetailPage;

@@ -12,3 +12,11 @@
 .detailDescription input {
   margin-top: 2rem;
 }
+
+.aniStart {
+  transform: scale(0);
+}
+.end {
+  transform: scale(1);
+  transition: all 0.5s;
+}

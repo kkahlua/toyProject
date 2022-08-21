@@ -29,7 +29,7 @@ function MainPage(props) {
   return (
     <div className="mainPage">
       <div className="main-bg"></div>
-      {alert == true ? (
+      {alert === true ? (
         <div className="alert alert-danger">
           상품이 더이상 존재하지 않습니다.
         </div>
