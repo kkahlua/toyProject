@@ -1,8 +1,11 @@
 /*eslint-disable*/
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Row, Col, Nav } from "react-bootstrap";
+import { Row, Col, Nav, Button } from "react-bootstrap";
 import "../style/detailPage.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addStock } from "../store/UserSlice";
+import CartPage from "./CartPage";
 function DetailPage(props) {
   let { id } = useParams();
   let target = props.shoes.find((x) => {
@@ -10,6 +13,10 @@ function DetailPage(props) {
   });
   let [alert, setAlert] = useState(false);
   let [inputValue, setInputValue] = useState("");
+  let state = useSelector((state) => {
+    return state;
+  });
+  let dispatch = useDispatch();
   useEffect(() => {
     if (isNaN(inputValue)) {
       setAlert(true);
@@ -39,7 +46,25 @@ function DetailPage(props) {
               }}
               value={inputValue}
             />
-            <button className="btn btn-danger">주문하기</button>
+            <Button
+              variant="danger"
+              onClick={() => {
+                if (isNaN(inputValue)) {
+                } else {
+                  dispatch(
+                    addStock({
+                      id: target.id,
+                      name: target.title,
+                      count: inputValue,
+                    })
+                  );
+                }
+                // dispatch(addStock({ id: 1, name: "Red Knit", count: 1 }));
+                console.log(state);
+              }}
+            >
+              주문하기
+            </Button>
           </Col>
         </Row>
         <TapComponent />
@@ -79,7 +104,7 @@ function TapComponent() {
             }}
             eventKey="link-2"
           >
-            질문
+            장바구니 목록
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
@@ -113,7 +138,7 @@ function TabContent(props) {
         [
           <div>상세정보</div>,
           <div>리뷰</div>,
-          <div>질문</div>,
+          <CartPage />,
           <div>반품, 교환정보</div>,
         ][props.productTap]
       }

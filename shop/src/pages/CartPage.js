@@ -8,7 +8,7 @@ function CartPage() {
     return state;
   });
   let dispatch = useDispatch();
-  console.log(state.stock);
+  // console.log(state.stock);
   return (
     <div className="cartPage">
       <Table striped bordered hover variant="dark">
@@ -32,6 +32,7 @@ function CartPage() {
                   <Button
                     onClick={() => {
                       dispatch(addCount(state.stock[i].id));
+                      // dispatch(addCount(i));
                     }}
                   >
                     ➕
@@ -41,7 +42,8 @@ function CartPage() {
                   <Button
                     onClick={() => {
                       dispatch(deleteStock(state.stock[i].id));
-                      console.log(state.stock);
+                      // dispatch(deleteStock(i));
+                      // console.log(state.stock);
                     }}
                   >
                     삭제

@@ -46,7 +46,7 @@ function MainPage(props) {
       {props.shoes.map((a, idx) => {
         if (idx % 3 === 0)
           return (
-            <Row>
+            <Row key={idx + props.shoes[idx].title}>
               <Product shoes={props.shoes[idx]} key={props.shoes[idx].title} />
               <Product
                 shoes={props.shoes[idx + 1]}
