@@ -1,11 +1,14 @@
 import React from "react";
 import { Button, Table } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addCount, deleteStock } from "../store/UserSlice";
 
 function CartPage() {
   let state = useSelector((state) => {
-    return state.stock;
+    return state;
   });
+  let dispatch = useDispatch();
+  console.log(state.stock);
   return (
     <div className="cartPage">
       <Table striped bordered hover variant="dark">
@@ -14,18 +17,35 @@ function CartPage() {
             <th>ID</th>
             <th>상품</th>
             <th>수량</th>
+            <th>추가하기</th>
             <th>삭제</th>
           </tr>
         </thead>
         <tbody>
-          {state.map((a, i) => {
+          {state.stock.map((a, i) => {
             return (
-              <tr key={a + i}>
-                <td>{a.id}</td>
-                <td>{a.name}</td>
-                <td>{a.count}</td>
+              <tr key={state.stock[i] + i}>
+                <td>{state.stock[i].id}</td>
+                <td>{state.stock[i].name}</td>
+                <td>{state.stock[i].count}</td>
                 <td>
-                  <Button>삭제</Button>
+                  <Button
+                    onClick={() => {
+                      dispatch(addCount(state.stock[i].id));
+                    }}
+                  >
+                    ➕
+                  </Button>
+                </td>
+                <td>
+                  <Button
+                    onClick={() => {
+                      dispatch(deleteStock(state.stock[i].id));
+                      console.log(state.stock);
+                    }}
+                  >
+                    삭제
+                  </Button>
                 </td>
               </tr>
             );
