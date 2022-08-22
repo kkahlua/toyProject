@@ -40,7 +40,11 @@ function Navibar() {
               >
                 <FontAwesomeIcon icon={faCartShopping} fixedWidth />
               </Nav.Link>
-              <Nav.Link href="#action2">
+              <Nav.Link
+                onClick={() => {
+                  navigate("/cart");
+                }}
+              >
                 <FontAwesomeIcon icon={faApplePay} size="2x" />
               </Nav.Link>
               <NavDropdown title="Link" id="navbarScrollingDropdown">
