@@ -59,7 +59,6 @@ function DetailPage(props) {
                     })
                   );
                 }
-                // dispatch(addStock({ id: 1, name: "Red Knit", count: 1 }));
                 console.log(state);
               }}
             >
@@ -118,7 +117,7 @@ function TapComponent() {
           </Nav.Link>
         </Nav.Item>
       </Nav>
-      <TabContent productTap={productTap} />;
+      <TabContent productTap={productTap} />
     </>
   );
 }
