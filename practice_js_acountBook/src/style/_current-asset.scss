@@ -11,6 +11,7 @@
   border-radius: 12px;
   margin: 0px 20px;
 }
+
 .current-asset-row {
   display: flex;
   align-items: center;
@@ -22,12 +23,14 @@
   width: 80px;
   min-width: 80px;
 }
+.current-asset-value-wrapper {
+  width: 100%;
+}
 
 .current-asset-value {
   padding: 14px;
   padding-right: 0px;
   font-size: 16px;
-  width: 100%;
   border: none;
   text-align: right;
   cursor: pointer;
