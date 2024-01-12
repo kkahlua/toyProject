@@ -1,0 +1,38 @@
+@import "./common";
+@import "./current-asset";
+@import "./consumption-details";
+
+/* 공통 */
+body {
+  margin: 0;
+  line-height: 1;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  display: flex;
+  justify-content: center;
+  color: #606060;
+}
+
+p {
+  margin: 0px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  text-align: right;
+}
+
+#container {
+  background-color: #f6f6f6;
+  width: 400px;
+  font-size: 16px;
+  min-height: 100vh;
+}
