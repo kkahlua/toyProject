@@ -1,4 +1,5 @@
 import { request } from "./api.js";
+import Breadcrumb from "./Breadcrumb.js";
 import ImageViewer from "./ImageViewer.js";
 import Loading from "./Loading.js";
 import Nodes from "./Nodes.js";
@@ -9,6 +10,31 @@ export default function App({ $target }) {
     nodes: [],
     path: [],
   };
+
+  const loading = new Loading({
+    $target,
+  });
+
+  const breadcrumb = new Breadcrumb({
+    $target,
+    initialState: this.state.path,
+    onClick: async (id) => {
+      if (id) {
+        const nextPath = id ? [...this.state.path] : [];
+        const pathIndex = nextPath.findIndex((path) => path.id === id);
+        this.setState({
+          ...this.state,
+          path: nextPath.slice(0, pathIndex + 1),
+        });
+      } else {
+        this.setState({
+          ...this.state,
+          path: [],
+        });
+      }
+      await fetchNodes(id);
+    },
+  });
 
   const nodes = new Nodes({
     $target,
@@ -57,10 +83,6 @@ export default function App({ $target }) {
     },
   });
 
-  const loading = new Loading({
-    $target,
-  });
-
   this.setState = (nextState) => {
     (this.state = nextState),
       nodes.setState({
@@ -71,6 +93,7 @@ export default function App({ $target }) {
       selectedImageURL: this.state.selectedImageURL,
     });
     loading.setState(this.state.isLoading);
+    breadcrumb.setState(this.state.path);
   };
 
   const fetchNodes = async (id) => {
