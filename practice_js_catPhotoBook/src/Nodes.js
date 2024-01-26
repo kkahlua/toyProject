@@ -23,7 +23,7 @@ export default function Nodes({ $target, initialState, onClick }) {
         ${nodes
           .map(
             (node) => `
-            <div class="Node">
+            <div class="Node" data-id="${node.id}">
                 <img src="${
                   node.type === "DIRECTORY"
                     ? "../images/directory.png"
@@ -37,4 +37,19 @@ export default function Nodes({ $target, initialState, onClick }) {
     `;
   };
   this.render();
+
+  $nodes.addEventListener("click", (e) => {
+    const $node = e.target.closest(".Node");
+    const { id } = $node.dataset;
+    console.log(id);
+
+    if (!id) {
+    }
+    const node = this.state.nodes.find((node) => node.id === id);
+    if (node) {
+      onClick(node);
+    } else {
+      alert("에러!!");
+    }
+  });
 }
