@@ -1,4 +1,4 @@
-export default function Nodes({ $target, initialState, onClick }) {
+export default function Nodes({ $target, initialState, onClick, onPrevClick }) {
   const $nodes = document.createElement("div");
   $target.appendChild($nodes);
   $nodes.classList.add("Nodes");
@@ -49,7 +49,7 @@ export default function Nodes({ $target, initialState, onClick }) {
     if (node) {
       onClick(node);
     } else {
-      alert("에러!!");
+      onPrevClick();
     }
   });
 }

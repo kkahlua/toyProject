@@ -6,6 +6,7 @@ export default function App({ $target }) {
   this.state = {
     isRoot: true,
     nodes: [],
+    path: [],
   };
 
   const nodes = new Nodes({
@@ -16,12 +17,31 @@ export default function App({ $target }) {
       selectedImageURL: null,
     },
     onClick: async (node) => {
-      if (node.type === "DIRECTORY") await fetchNodes(node.id);
+      if (node.type === "DIRECTORY") {
+        await fetchNodes(node.id);
+        this.setState({
+          ...this.state,
+          path: [...this.state.path, node],
+        });
+      }
       if (node.type === "FILE") {
         this.setState({
           ...this.state,
           selectedImageURL: `https://cat-photos-dev-serverlessdeploymentbucket-fdpz0swy5qxq.s3.ap-northeast-2.amazonaws.com/public${node.filePath}`,
         });
+      }
+    },
+    onPrevClick: async () => {
+      const nextPath = [...this.state.path];
+      nextPath.pop();
+      this.setState({
+        ...this.state,
+        path: nextPath,
+      });
+      if (nextPath.length === 0) {
+        await fetchNodes();
+      } else {
+        await fetchNodes(nextPath[nextPath.length - 1].id);
       }
     },
   });
