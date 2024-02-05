@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 function DiaryEditor() {
+  let authorInput = useRef();
+  let contentTextarea = useRef();
   let [state, setState] = useState({
     author: "",
     content: "",
@@ -13,7 +15,14 @@ function DiaryEditor() {
     });
   }
   function handleSubmit() {
-    console.log(state);
+    if (state.author.length < 1) {
+      authorInput.current.focus();
+      return;
+    }
+    if (state.content.length < 1) {
+      contentTextarea.current.focus();
+      return;
+    }
     alert("Save Success");
   }
   return (
@@ -21,6 +30,7 @@ function DiaryEditor() {
       <h2>Simple Diary</h2>
       <div className="authorInput">
         <input
+          ref={authorInput}
           name="author"
           value={state.author}
           onChange={handleChangeState}
@@ -28,6 +38,7 @@ function DiaryEditor() {
       </div>
       <div className="contentTextarea">
         <textarea
+          ref={contentTextarea}
           name="content"
           value={state.content}
           onChange={handleChangeState}
