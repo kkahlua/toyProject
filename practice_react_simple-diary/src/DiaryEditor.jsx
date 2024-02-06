@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-function DiaryEditor() {
+function DiaryEditor({ onCreate }) {
   let authorInput = useRef();
   let contentTextarea = useRef();
   let [state, setState] = useState({
@@ -23,7 +23,13 @@ function DiaryEditor() {
       contentTextarea.current.focus();
       return;
     }
+    onCreate(state.author, state.content, state.emotion);
     alert("Save Success");
+    setState({
+      author: "",
+      content: "",
+      emotion: 1,
+    });
   }
   return (
     <div className="DiaryEditor">
