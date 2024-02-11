@@ -1,12 +1,42 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useReducer,
+  useRef,
+} from "react";
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
 
-function App() {
-  let [data, setData] = useState([]);
-  let dataId = useRef(0);
+function reducer(state, action) {
+  switch (action.type) {
+    case "INIT":
+      return action.data;
+    case "CREATE": {
+      let created_date = new Date().getTime();
+      let newItem = {
+        ...action.data,
+        created_date,
+      };
+      return [newItem, ...state];
+    }
+    case "DELETE":
+      return state.filter((e) => e.id !== action.targetId);
+    case "UPDATE":
+      return state.map((e) =>
+        e.id === action.targetId ? { ...e, content: action.newContent } : e
+      );
+    default:
+      return state;
+  }
+}
+export const DiaryStateContext = React.createContext();
+export const DiaryDispatchContext = React.createContext();
 
+function App() {
+  let dataId = useRef(0);
+  const [data, dispatch] = useReducer(reducer, []);
   async function getData() {
     let res = await fetch("https://jsonplaceholder.typicode.com/posts").then(
       (e) => e.json()
@@ -20,36 +50,32 @@ function App() {
         id: dataId.current++,
       };
     });
-    setData(initData);
+    dispatch({ type: "INIT", data: initData });
   }
 
   useEffect(() => {
     getData();
   }, []);
 
-  function onCreate(author, content, emotion) {
-    let created_date = new Date().getTime();
-    let newItem = {
-      author,
-      content,
-      emotion,
-      created_date,
-      id: dataId.current,
-    };
+  const onCreate = useCallback((author, content, emotion) => {
+    dispatch({
+      type: "CREATE",
+      data: { author, content, emotion, id: dataId.current },
+    });
     dataId.current += 1;
-    setData([newItem, ...data]);
-  }
+  }, []);
 
-  function onUpdate(targetId, newContent) {
-    setData(
-      data.map((e) => (e.id === targetId ? { ...e, content: newContent } : e))
-    );
-  }
+  const onUpdate = useCallback((targetId, newContent) => {
+    dispatch({ type: "UPDATE", targetId, newContent });
+  }, []);
 
-  function onDelete(targetId) {
-    let newDiaryList = data.filter((e) => e.id !== targetId);
-    setData(newDiaryList);
-  }
+  const onDelete = useCallback((targetId) => {
+    dispatch({ type: "DELETE", targetId });
+  }, []);
+
+  const memoizedDispatches = useMemo(() => {
+    return { onCreate, onUpdate, onDelete };
+  }, []);
 
   const getDiaryAnalysis = useMemo(() => {
     if (data.length === 0) {
@@ -64,14 +90,18 @@ function App() {
   let { goodCount, badCount, goodRatio } = getDiaryAnalysis;
 
   return (
-    <div className="App">
-      <DiaryEditor onCreate={onCreate} />
-      <div>전체 일기 : {data.length}</div>
-      <div>기분 좋은 일기 개수 : {goodCount}</div>
-      <div>기분 나쁜 일기 개수 : {badCount}</div>
-      <div>기분 좋은 일기 비율 : {goodRatio}%</div>
-      <DiaryList diaryList={data} onDelete={onDelete} onUpdate={onUpdate} />
-    </div>
+    <DiaryStateContext.Provider value={data}>
+      <DiaryDispatchContext.Provider value={memoizedDispatches}>
+        <div className="App">
+          <DiaryEditor />
+          <div>전체 일기 : {data.length}</div>
+          <div>기분 좋은 일기 개수 : {goodCount}</div>
+          <div>기분 나쁜 일기 개수 : {badCount}</div>
+          <div>기분 좋은 일기 비율 : {goodRatio}%</div>
+          <DiaryList />
+        </div>
+      </DiaryDispatchContext.Provider>
+    </DiaryStateContext.Provider>
   );
 }
 

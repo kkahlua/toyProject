@@ -1,6 +1,9 @@
 import React, { useRef, useState } from "react";
+import { useContext } from "react";
+import { DiaryDispatchContext } from "./App";
 
-function DiaryEditor({ onCreate }) {
+function DiaryEditor() {
+  let { onCreate } = useContext(DiaryDispatchContext);
   let authorInput = useRef();
   let contentTextarea = useRef();
   let [state, setState] = useState({
@@ -71,4 +74,4 @@ function DiaryEditor({ onCreate }) {
   );
 }
 
-export default DiaryEditor;
+export default React.memo(DiaryEditor);
