@@ -33,9 +33,43 @@ function reducer(state, action) {
 export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
 
+const dummyData = [
+  {
+    id: 1,
+    emotion: 1,
+    content: "1231231244",
+    date: 1707982327506,
+  },
+  {
+    id: 2,
+    emotion: 2,
+    content: "22234214244",
+    date: 1707982327700,
+  },
+  {
+    id: 3,
+    emotion: 3,
+    content: "332323244",
+    date: 1707982328000,
+  },
+  {
+    id: 4,
+    emotion: 4,
+    content: "432323244",
+    date: 1707982338000,
+  },
+  {
+    id: 5,
+    emotion: 5,
+    content: "532323244",
+    date: 1707982348000,
+  },
+];
+
 function App() {
-  const [data, dispatch] = useReducer(reducer, []);
+  const [data, dispatch] = useReducer(reducer, dummyData);
   const dataId = useRef(0);
+
   function onCreate(date, content, emotion) {
     dispatch({
       type: "CREATE",
@@ -48,9 +82,11 @@ function App() {
     });
     dataId.current += 1;
   }
+
   function onRemove(targetId) {
     dispatch({ type: "REMOVE", targetId });
   }
+
   function onEdit(targetId, date, content, emotion) {
     dispatch({
       type: "EDIT",
@@ -62,6 +98,7 @@ function App() {
       },
     });
   }
+
   return (
     <DiaryStateContext.Provider value={data}>
       <DiaryDispatchContext.Provider value={{ onCreate, onRemove, onEdit }}>
