@@ -1,9 +1,10 @@
 import React from "react";
+import DiaryEditor from "../components/DiaryEditor";
 
 function New() {
   return (
     <div className="New">
-      <h1>New</h1>
+      <DiaryEditor />
     </div>
   );
 }
