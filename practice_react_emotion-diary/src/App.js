@@ -21,7 +21,7 @@ function reducer(state, action) {
     }
     case "EDIT": {
       newState = state.map((e) =>
-        e.id === action.data.id ? { ...action.data.id } : e
+        e.id === action.data.id ? { ...action.data } : e
       );
       break;
     }
@@ -107,7 +107,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/new" element={<New />} />
-              <Route path="/edit" element={<Edit />} />
+              <Route path="/edit/:id" element={<Edit />} />
               <Route path="/diary/:id" element={<Diary />} />
             </Routes>
           </div>
