@@ -17,7 +17,14 @@ function Home() {
         curDate.getMonth(),
         1
       ).getTime();
-      let lastDay = new Date(curDate.getFullYear(), curDate.getMonth() + 1, 0);
+      let lastDay = new Date(
+        curDate.getFullYear(),
+        curDate.getMonth() + 1,
+        0,
+        23,
+        59,
+        59
+      );
       setData(diaryList.filter((e) => firstDay <= e.date && e.date <= lastDay));
     }
   }, [diaryList, curDate]);
