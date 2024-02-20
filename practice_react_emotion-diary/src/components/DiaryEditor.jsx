@@ -6,6 +6,7 @@ import Header from "./Header";
 import { DiaryDispatchContext } from "../App";
 import { getStringDate } from "../util/date";
 import { emotionList } from "../util/emotion";
+import { useCallback } from "react";
 
 function DiaryEditor({ isEdit, originData }) {
   const contentRef = useRef();
@@ -15,9 +16,9 @@ function DiaryEditor({ isEdit, originData }) {
   const navigate = useNavigate();
   const { onCreate, onEdit, onReomve } = useContext(DiaryDispatchContext);
 
-  function handleClickEmote(emotion) {
+  const handleClickEmote = useCallback((emotion) => {
     setEmotion(emotion);
-  }
+  }, []);
 
   function handelSubmit() {
     if (content.length < 1) {
