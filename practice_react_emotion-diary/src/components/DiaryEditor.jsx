@@ -14,7 +14,7 @@ function DiaryEditor({ isEdit, originData }) {
   const [emotion, setEmotion] = useState(3);
   const [date, setDate] = useState(getStringDate(new Date()));
   const navigate = useNavigate();
-  const { onCreate, onEdit, onReomve } = useContext(DiaryDispatchContext);
+  const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
 
   const handleClickEmote = useCallback((emotion) => {
     setEmotion(emotion);
@@ -38,7 +38,7 @@ function DiaryEditor({ isEdit, originData }) {
   }
   function handleRemove() {
     if (window.confirm("정말 삭제하시겠습니까?")) {
-      onReomve(originData.id);
+      onRemove(originData.id);
       navigate("/", { replace: true });
     }
   }

@@ -15,6 +15,10 @@ function Diary() {
   const navigate = useNavigate();
   const [data, setData] = useState();
   useEffect(() => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `Emotion Diary - ${id}번 Diary`;
+  }, []);
+  useEffect(() => {
     if (diaryList.length > 0) {
       let targetDiary = diaryList.find((e) => parseInt(e.id) === parseInt(id));
       if (targetDiary) {
