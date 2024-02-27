@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../pages/Event.module.css";
+import styles from "../pages/Event_Bootstrap.module.css";
 import arrow_left from "../assets/icons/arrow_left.svg";
 import share from "../assets/icons/share.svg";
 

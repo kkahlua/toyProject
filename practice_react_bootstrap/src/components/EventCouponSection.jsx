@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../pages/Event.module.css";
+import styles from "../pages/Event_Bootstrap.module.css";
 
 function EventCouponSection() {
   return (
