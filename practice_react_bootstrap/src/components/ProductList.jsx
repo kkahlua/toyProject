@@ -6,7 +6,7 @@ import product4 from "../assets/images/event/products/product4.avif";
 import { Card } from "react-bootstrap";
 import styles from "../pages/Event_Bootstrap.module.css";
 
-const productList = [
+export const productList = [
   {
     img: product1,
     type: "셔츠/블라우스",

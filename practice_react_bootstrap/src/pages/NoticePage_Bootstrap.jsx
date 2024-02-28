@@ -206,7 +206,7 @@ function NoticePage_Bootstrap() {
           onClick={() => handleCommentToggle(!commentToggle)}
         >
           <section className={styles.header}>
-            <Link to={"/event/bootstrap"}>
+            <Link to={"/"}>
               <button className={styles.header__btn}>
                 <img src={leeshop} alt="leeshop" />
               </button>
