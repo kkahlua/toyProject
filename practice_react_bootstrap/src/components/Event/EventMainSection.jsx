@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../pages/Event_Bootstrap.module.css";
-import event_thumb from "../assets/images/event_thumb.png";
-import star from "../assets/icons/star.svg";
+import styles from "../../pages/Event/Event_Bootstrap.module.css";
+import event_thumb from "../../assets/images/event_thumb.png";
+import star from "../../assets/icons/star.svg";
 
 function EventMainSection() {
   return (

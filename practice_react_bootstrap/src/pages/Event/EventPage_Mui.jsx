@@ -12,11 +12,11 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 
-import evnet_thumb from "../assets/images/event_thumb.png";
-import coupon_left from "../assets/images/event/coupon_left.png";
-import coupon_right from "../assets/images/event/coupon_right.png";
-import star from "../assets/icons/star.svg";
-import { productList } from "../components/ProductList";
+import evnet_thumb from "../../assets/images/event_thumb.png";
+import coupon_left from "../../assets/images/event/coupon_left.png";
+import coupon_right from "../../assets/images/event/coupon_right.png";
+import star from "../../assets/icons/star.svg";
+import { productList } from "../../components/Event/ProductList";
 
 const MuiButton = styled(Button)({
   boxShadow: "none",
@@ -58,7 +58,7 @@ function EventPage_Mui() {
             direction="row"
             className={styles.header}
           >
-            <Link to={"/"}>
+            <Link to={"/bootstrap"}>
               <button className={styles.header__btn}>
                 <ArrowBackIosNewIcon style={{ color: "#383838" }} />
               </button>

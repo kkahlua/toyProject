@@ -1,10 +1,10 @@
 import React from "react";
-import product1 from "../assets/images/event/products/product1.png";
-import product2 from "../assets/images/event/products/product2.png";
-import product3 from "../assets/images/event/products/product3.jpeg";
-import product4 from "../assets/images/event/products/product4.avif";
+import product1 from "../../assets/images/event/products/product1.png";
+import product2 from "../../assets/images/event/products/product2.png";
+import product3 from "../../assets/images/event/products/product3.jpeg";
+import product4 from "../../assets/images/event/products/product4.avif";
 import { Card } from "react-bootstrap";
-import styles from "../pages/Event_Bootstrap.module.css";
+import styles from "../../pages/Event/Event_Bootstrap.module.css";
 
 export const productList = [
   {

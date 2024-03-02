@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import EventPage_Antd from "./pages/EventPage_Antd";
-import EventPage_Bootstrap from "./pages/EventPage_Bootstrap";
-import EventPage_Mui from "./pages/EventPage_Mui";
-import NoticePage_Bootstrap from "./pages/NoticePage_Bootstrap";
-import VideoEditor from "./pages/VideoEditor";
+import EventPage_Antd from "./pages/Event/EventPage_Antd";
+import EventPage_Bootstrap from "./pages/Event/EventPage_Bootstrap";
+import EventPage_Mui from "./pages/Event/EventPage_Mui";
+import NoticePage_Bootstrap from "./pages/Notice/NoticePage_Bootstrap";
+import VideoEditor from "./pages/Video/VideoEditor";
 
 function App() {
   return (

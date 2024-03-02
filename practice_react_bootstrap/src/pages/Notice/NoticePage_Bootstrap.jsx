@@ -4,14 +4,14 @@ import { Form } from "react-bootstrap";
 import styles from "./Notice_Bootstrap.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import notice_result from "../assets/images/event/notice_result.png";
-import leeshop from "../assets/icons/leeshop.svg";
-import search from "../assets/icons/search.svg";
-import menu from "../assets/icons/menu.svg";
-import heart from "../assets/icons/heart.svg";
-import comment from "../assets/icons/comment.svg";
-import more from "../assets/icons/more.svg";
-import bootStrapLogo from "../assets/icons/bootStrapLogo.svg";
+import notice_result from "../../assets/images/event/notice_result.png";
+import leeshop from "../../assets/icons/leeshop.svg";
+import search from "../../assets/icons/search.svg";
+import menu from "../../assets/icons/menu.svg";
+import heart from "../../assets/icons/heart.svg";
+import comment from "../../assets/icons/comment.svg";
+import more from "../../assets/icons/more.svg";
+import bootStrapLogo from "../../assets/icons/bootStrapLogo.svg";
 
 export const commentList = [
   {
@@ -206,7 +206,7 @@ function NoticePage_Bootstrap() {
           onClick={() => handleCommentToggle(!commentToggle)}
         >
           <section className={styles.header}>
-            <Link to={"/"}>
+            <Link to={"/bootstrap"}>
               <button className={styles.header__btn}>
                 <img src={leeshop} alt="leeshop" />
               </button>

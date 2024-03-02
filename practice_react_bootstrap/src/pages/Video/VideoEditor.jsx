@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import styles from "./VideoEditor.module.css";
-import video_placeholder from "../assets/images/video_placeholder.png";
+import video_placeholder from "../../assets/images/video_placeholder.png";
 import { Button, Modal, Spinner, Toast, ToastContainer } from "react-bootstrap";
 import { useRef } from "react";
 import { createFFmpeg } from "@ffmpeg/ffmpeg";
-import VideoPlayer from "../components/VideoPlayer";
-import VideoConversionButton from "../components/VideoConversionButton";
-import { sliderValueToVideoTime } from "../utils/utils";
-import MultiRangeSlider from "../components/MultiRangeSlider";
+import VideoPlayer from "../../components/Video/VideoPlayer";
+import VideoConversionButton from "../../components/Video/VideoConversionButton";
+import { sliderValueToVideoTime } from "../../utils/utils";
+import MultiRangeSlider from "../../components/Video/MultiRangeSlider";
 
 const ffmpeg = createFFmpeg({ log: true });
 function VideoEditor() {

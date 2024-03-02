@@ -7,11 +7,11 @@ import {
   LeftOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
-import evnet_thumb from "../assets/images/event_thumb.png";
-import coupon_left from "../assets/images/event/coupon_left.png";
-import coupon_right from "../assets/images/event/coupon_right.png";
-import star from "../assets/icons/star.svg";
-import { productList } from "../components/ProductList";
+import event_thumb from "../../assets/images/event_thumb.png";
+import coupon_left from "../../assets/images/event/coupon_left.png";
+import coupon_right from "../../assets/images/event/coupon_right.png";
+import star from "../../assets/icons/star.svg";
+import { productList } from "../../components/Event/ProductList";
 
 function EventPage_Antd() {
   const [currentFilter, setCurrentFilter] = useState("남성의류");
@@ -27,7 +27,7 @@ function EventPage_Antd() {
             align="center"
             className={styles.header}
           >
-            <Link to={"/"}>
+            <Link to={"/bootstrap"}>
               <button className={styles.header__btn}>
                 <LeftOutlined style={{ fontSize: 22, color: "#383838" }} />
               </button>
@@ -44,7 +44,7 @@ function EventPage_Antd() {
 
           <section>
             <img
-              src={evnet_thumb}
+              src={event_thumb}
               alt="event main"
               className={styles.event__img}
             />

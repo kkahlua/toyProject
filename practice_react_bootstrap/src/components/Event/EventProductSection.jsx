@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ProductList from "./ProductList";
-import styles from "../pages/Event_Bootstrap.module.css";
+import styles from "../../pages/Event/Event_Bootstrap.module.css";
 
 function EventProductSection() {
   const [currentFilter, setCurrentFilter] = useState("남성의류");

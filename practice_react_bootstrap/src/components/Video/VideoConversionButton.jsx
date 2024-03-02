@@ -1,8 +1,8 @@
 import { Button } from "react-bootstrap";
 import { fetchFile } from "@ffmpeg/ffmpeg";
-import { readFileAsBase64, sliderValueToVideoTime } from "../utils/utils";
-import out from "../assets/icons/out.svg";
-import dark_download from "../assets/icons/dark_download.svg";
+import { readFileAsBase64, sliderValueToVideoTime } from "../../utils/utils";
+import out from "../../assets/icons/out.svg";
+import dark_download from "../../assets/icons/dark_download.svg";
 
 function VideoConversionButton({
   videoPlayerState,

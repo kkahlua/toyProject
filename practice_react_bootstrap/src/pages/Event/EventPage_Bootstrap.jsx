@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "../pages/Event_Bootstrap.module.css";
-import EventMainSection from "../components/EventMainSection";
-import EventHeader from "../components/EventHeader";
-import EventProductSection from "../components/EventProductSection";
-import EventCouponSection from "../components/EventCouponSection";
+import styles from "./Event_Bootstrap.module.css";
+import EventMainSection from "../../components/Event/EventMainSection";
+import EventHeader from "../../components/Event/EventHeader";
+import EventProductSection from "../../components/Event/EventProductSection";
+import EventCouponSection from "../../components/Event/EventCouponSection";
 
 function EventPage_Bootstrap() {
   return (
