@@ -8,6 +8,7 @@ import {
   Dimensions,
   FlatList,
 } from 'react-native';
+import CommentsModal from '../components/CommentsModal';
 
 const logo = require('../assets/icons/logo.png');
 const heart = require('../assets/icons/heart.png');
@@ -249,6 +250,7 @@ const Home = () => {
             </View>
           )}
         />
+        <CommentsModal isVisible={isVisible} setIsVisible={setIsVisible} />
       </View>
     </SafeAreaView>
   );
