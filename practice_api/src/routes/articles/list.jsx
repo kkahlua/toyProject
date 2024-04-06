@@ -1,4 +1,6 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
+
 function List() {
   const [articles, setArticles] = React.useState([]);
   React.useEffect(() => {
@@ -19,7 +21,9 @@ function List() {
       <h1>List</h1>
       <ul>
         {articles.map((article, idx) => (
-          <li key={article.id}>{article.title}</li>
+          <li key={article.id}>
+            <Link to={`/articles/${article.id}`}>{article.title}</Link>
+          </li>
         ))}
       </ul>
     </>
