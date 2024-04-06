@@ -26,6 +26,9 @@ function List() {
           </li>
         ))}
       </ul>
+      <Link to={"/articles/new"}>
+        <button>게시글 작성</button>
+      </Link>
     </>
   );
 }
