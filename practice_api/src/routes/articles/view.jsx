@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function View() {
   const { articleId } = useParams();
@@ -22,6 +22,9 @@ function View() {
     <>
       <h1>{article.title}</h1>
       <p>{article.content}</p>
+      <Link to={`/articles/${articleId}/edit`} state={{ article }}>
+        <button>수정</button>
+      </Link>
     </>
   );
 }
