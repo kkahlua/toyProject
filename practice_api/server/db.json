@@ -1,0 +1,43 @@
+{
+  "articles": [
+    {
+      "title": "kill bill",
+      "content": "SZA",
+      "id": "ee9ee0e0-48b0-49ba-9671-0b07fd8d38a4"
+    },
+    {
+      "title": "love story",
+      "content": "Taylor Swift",
+      "id": "742f106d-b489-4699-94cb-4b564b1811e2"
+    },
+    {
+      "title": "Use Patch Method",
+      "content": "async 함수의 결과로 promise 객체가 반환된다.",
+      "id": "3ca57514-af57-401a-b2e7-eeb1b14802b9"
+    },
+    {
+      "title": "123",
+      "content": "321",
+      "id": "5aeffe6e-5f87-413a-a176-e0b941bbf9a4"
+    },
+    {
+      "title": "Nonsense",
+      "content": "Sabrina Carpenter",
+      "id": "8f5bbc34-6b66-404d-8cb5-7e91826ef47d"
+    }
+  ],
+  "users": [
+    {
+      "email": "Monique72@gmail.com",
+      "username": "part of me",
+      "password": "$2b$10$6z/4/Gaqx6zcSoeYT.tJLOKe.EfnX0XC.x.3Zyh.R1ANNx7MssHkK",
+      "id": "6cb701a9-0b52-40bf-8948-3ad7942c4e8d"
+    },
+    {
+      "email": "test1@test",
+      "username": "test2",
+      "password": "$2b$10$nLzckRhk238Ec68lnEICGO2FaUSXm12UMD3WWNel80QetFNrk19.a",
+      "id": "7f9f0489-5a57-44d5-947b-97a4c1be5482"
+    }
+  ]
+}
